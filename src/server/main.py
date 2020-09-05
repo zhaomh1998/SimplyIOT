@@ -46,6 +46,7 @@ def third_party_switch(q):
                         if current > sched['ts']:
                             if sched['cb'](*device):
                                 sched['active'] = False
+                                config['active'] = False
                                 continue
                             else:
                                 logging.error(f'Failed to turn off {device}. Retrying in 1s')

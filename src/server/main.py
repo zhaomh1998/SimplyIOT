@@ -113,9 +113,9 @@ class SIOTServer:
     def set_vesync(self):
         if all([i in request.headers for i in ['Aid', 'Tk', 'Cid', 'On', 'Off', 'Last']]):
             self.update_queue.put(('VeSync', dict(request.headers)))
-            return make_response(''), 200
+            return make_response({'ok': True}), 200
         else:
-            return make_response(''), 400
+            return make_response({'ok': False, 'message': 'API syntax error'}), 400
 
 
 if __name__ == '__main__':
